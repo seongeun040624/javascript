@@ -36,7 +36,7 @@ console.log(typeof input)
 console.log(3 * input)
 console.log(Number(input)) */
 
-//산술연산자
+//할당연산자
 let x=1;
 let y=7;
 y += x; //y=y+x
