@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11/26</title>
+</head>
+<body>
+    <h1>반복문</h1>
+
+	<h2>for</h2>
+	<ul id="for"></ul>
+
+	<hr>
+
+	<h2>forEach</h2>
+	<ul id="foreach"></ul>
+
+	<hr>
+
+	<h2>for of</h2>
+	<ul id="forof"></ul>
+
+	<hr>
+
+	<h2>for in</h2>
+	<ul id="forin"></ul>
+
+	<hr>
+
+	<h2>do / while</h2>
+	<ul id="dowhile"></ul>
+
+    <script>
+        let fruits=["cherry","apple", "banana"];
+
+        //for
+        for(let i=0; i<fruits.length; i++){
+            /* document.getElementById('for').innerHTML += '<li>'+fruits[i]+'</li>'; */
+            document.getElementById('for').innerHTML += `<li>${fruits[i]}</li>`;
+        }
+
+        //forEech
+       fruits.forEach(function(item, index){
+             document.getElementById('foreach').innerHTML += `<li>${item}</li>`;
+       })
+
+       //for of
+       let x;
+       for(x of fruits){
+            document.getElementById('forof').innerHTML += `<li>${x}</li>`;
+       }
+
+       //for in 배열에서 사용하지 않음 객체내의 값들마다 할일
+       let person={pname:"조지현",page:"46", pgender:"여성"}
+       let y;
+       for(y in person){
+             document.getElementById('forin').innerHTML += `<li>${y}:${person[y]}</li>`;
+       }
+
+
+       //do/while
+
+       let z=0;
+       do{
+           document.getElementById('dowhile').innerHTML += `<li>${fruits[z]}</li>`; 
+           z++;
+       }while(z<fruits.length)
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수 scope 11/27</title>
+</head>
+<body>
+    <script>
+        var sum=0; //전역변수 - 함수 바깥 선언
+        var result; //전역변수로 불렀지만 아래서 다시 불러서 값이 나오지 않음
+        function addNum(){
+            var result; //지역변수 - 함수 안 선언 
+            sum=10+20;
+            result= 10*20;
+            console.log(result) //함수 안에서 부르면 값을 보여줌
+        }
+        addNum();
+
+        console.log(sum) //30
+        console.log(result) //지역함수여서 함수 밖에서 부르면 알 수 없음 - 함수 바깥에 써야 답이 보임
+
+
+        var x=10; //전역변수
+        function displayNumber(){
+            var y=20; // 값이 나옴
+            console.log(`x is ${x}`);
+            console.log(`y is ${y}`);
+            // var y=20; //hoisting 때문에 아래에 쓰면 에러가 아닌? 정의되지 않은 상태로 나옴
+        }
+        displayNumber()
+
+
+        //var seed=3;
+        let seed=3;
+        for(let i=1; i<=5; i++){
+            //var seed =5; //재선언
+            let seed =5; // 블럭 스코프 안에서만 놀기 때문에 바깥과 상관 없는 듯
+            var result= seed*i;
+            console.log(result)
+        }
+        console.log(seed); //var - 재선언 때문에 값이 5가 나옴/ let - 블럭 안에서 따로 놀기 때문에? 바깥에 쓴 3이 나옴
+
+
+        function sum1(){
+            let n=10;
+            let result1=0;
+            for(let i=1; i<=n; i++){
+                result1 +=i;
+            }
+            console.log(result1);
+        }
+        sum1();
+        //console.log(result1); //함수 안에서만 쓰이기 때문에 에러가 뜸
+
+        doIt()
+        function doIt(){
+            let x=1;
+            console.log(x)
+
+            //let x=2; //let은 재선언 불가
+            //console.log(x);
+        }
+
+
+        const user='kim';
+        console.log(`my name is ${user}`);
+
+        //user='Lee'; //const도 재할당-재사용 불가
+        //console.log(`my name is ${user}`);
+    </script>
+</body>
+</html>

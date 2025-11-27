@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 11/26</title>
+</head>
+<body>
+    <h1 id="title">javascript Basic Selector</h1>
+   <div class="container">
+      <ul id="list1" class="list">
+         <li>li 1</li>
+         <li>li 2</li>
+         <li>li 3</li>
+         <li>li 4</li>
+         <li>li 5</li>
+      </ul>
+   </div>
+   <div class="container">
+      <ul id="list2" class="list">
+         <li>li 1</li>
+         <li>li 2</li>
+         <li>li 3</li>
+         <li>li 4</li>
+         <li>li 5</li>
+      </ul>
+   </div>
+   <div class="container">
+      <ul id="list3" class="list">
+         <li class="red" name="red">li 1</li>
+         <li>li 2</li>
+         <li>li 3</li>
+         <li>li 4</li>
+         <li id="list3_5">li 5</li>
+         <li>li 6</li>
+      </ul>
+   </div>
+    <div class="container">
+        <div id="box">
+            box
+            <div>box</div>
+        </div>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, eos, laudantium iure quaerat quia est libero expedita officiis molestiae itaque, molestias quidem dignissimos. Ea est distinctio doloremque totam, voluptates corporis?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, eos, laudantium iure quaerat quia est libero expedita officiis molestiae itaque, molestias quidem dignissimos. Ea est distinctio doloremque totam, voluptates corporis?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, eos, laudantium iure quaerat quia est libero expedita officiis molestiae itaque, molestias quidem dignissimos. Ea est distinctio doloremque totam, voluptates corporis?</p>
+    <script>
+        const title= document.getElementById('title');
+        title.style.color='red'
+
+        let myList=document.getElementsByClassName('list');
+        let paragraphs=document.getElementsByTagName('p');
+        /* let paragraphs1=document.querySelectorAll('p'); */
+        let myList2=document.querySelector('.list .red');
+        console.log(myList)
+         myList[0].style.color='green';
+         myList[2].style.color='green';
+         myList2.style.color='red';
+         /* paragraphs1[0].style.color='red';
+         paragraphs1[1].style.color='red'; */
+         for(let i=0; i<=paragraphs.length; i++){
+            paragraphs[i].style.color='red';
+         }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 11/26</title>
+</head>
+<body>
+    <script>
+         //let arr=[];
+         //let arr=new Array();
+
+        /*  let fruits=[];
+         fruits[0]='사과';
+         fruits[1]='바나나';
+         fruits[2]='체리';
+         document.write(fruits) */
+
+         let animals=["고양이","강아지","햄스터"]
+         let fruits=["체리","사과","블루베리","바나나"]
+
+         let newarr=fruits.concat(animals);
+         document.write(newarr)
+        let amount=fruits.length;
+
+         document.write( "<br/>")
+         document.write( amount + "<br/>")
+
+         let newFruits=fruits.join("/");
+          document.write( newFruits + "<br/>")
+        
+          let reverseFruits=fruits.reverse();
+           document.write( reverseFruits + "<br/>")
+
+        let sliceAnimals=animals.slice(0, 2);
+          document.write( sliceAnimals + "<br/>")
+    </script>
+   
+    <h2>값 추가 - push는 기존 값 뒤에 추가</h2>
+    <script>
+        let coffee=["메가커피","컴포즈","백다방"];
+        document.write( coffee + "<br/>")
+       coffee.push("스타벅스")
+       document.write( coffee + "<br/>")
+    </script>
+     <h2>값 추가 - unshift는 기존 값 앞에 추가</h2>
+    <script>
+        let coffee1=["메가커피","컴포즈","백다방"];
+        document.write( coffee1 + "<br/>")
+       coffee1.unshift("스타벅스")
+       document.write( coffee1 + "<br/>")
+    </script>
+
+    <h2>값 삭제 - pop는 기존 값 뒤에 있는 것을 삭제</h2>
+    <script>
+        let coffee2=["메가커피","컴포즈","백다방"];
+        document.write( coffee2 + "<br/>")
+       coffee2.pop()
+       document.write( coffee2 + "<br/>")
+    </script>
+
+    <h2>값 삭제 - shift는 기존 값 앞에 있는 것을 삭제</h2>
+    <script>
+        let coffee3=["메가커피","컴포즈","백다방"];
+        document.write( coffee3 + "<br/>")
+       coffee3.shift()
+       document.write( coffee3+ "<br/>")
+    </script>
+     <h2>값 삭제 -splice는 원하는값 삭제</h2>
+    <script>
+        let coffee4=["메가커피","컴포즈","백다방"];
+        document.write( coffee4 + "<br/>")
+       coffee4.splice(1,2)
+       document.write( coffee4+ "<br/>")
+    </script>
+</body>
+</html>
