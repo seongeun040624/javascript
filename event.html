@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 200px;
+            background: yellow;
+        }
+        #circle{
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">눌러보세요</button>
+    <button id="dbbtn">눌러보세요</button>
+    <div id="box">박스 위로 마우스를 올려보세요</div>
+    <div id="info">마우스를 움직여보세요</div>
+    <div id="circle"></div>
+    <script>
+        document.getElementById('btn').addEventListener('click', function(){
+            //alert('버튼이 클릭되었습니다.');
+            document.getElementById('btn').style.backgroundColor="red";
+        });
+        
+
+        document.getElementById('dbbtn').addEventListener('dblclick', function(){
+            this.style.backgroundColor="green";
+        });
+
+
+        document.getElementById('box').addEventListener('mouseover', function(){
+            this.style.backgroundColor='yellowgreen';
+        });
+        document.getElementById('box').addEventListener('mouseout', function(){
+            this.style.backgroundColor='yellow';
+        });
+
+
+        document.addEventListener("mousemove",function(event){
+            document.getElementById('info').textContent=`
+            x좌표:${event.clientX}, y좌표:${event.clientY}
+            `;
+        });
+
+
+        const circle= document.getElementById('circle')
+        document.addEventListener("mousemove",function(e){
+            circle.style.left=e.clientX+'px';
+            circle.style.top=e.clientY+'px';
+        });
+
+    </script>
+
+    <hr>
+
+    <script>
+        document.addEventListener('keydown', function(e){
+            console.log(e.key);
+        });
+
+
+        document.addEventListener("scroll", function(e){
+            console.log(window.scrollY);
+        });
+
+
+        window.addEventListener("load", function(e){
+            console.log('페이지가 모두 로딩되었습니다.');
+        });
+
+
+    </script>
+
+
+    <form action="#" id="myForm">
+        <input type="text">
+        <button type="submit">전송</button>
+    </form>
+    <a href="http://naver.com" id="aaa">네이버 이동</a>
+    <div id="bbb" onclick="alert('클릭했어용')">click</div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(e){
+            e.preventDefault(); //기본기능 막기
+            alert('폼 제출 이벤트 발생');
+        });
+
+
+        document.getElementById('aaa').addEventListener('click', function(e){
+            e.preventDefault();//기본기능 막기 - 예) 기본 기능=링크 이동이면 링크로 이동하지 못하게 막음
+            alert('링크 이동 이벤트 발생');
+        });
+    </script>
+
+</body>
+</html>

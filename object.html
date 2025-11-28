@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+</head>
+<body>
+    <script>
+        // let now = new Date(); //new=예약어 date=객체 -> now라는 변수에 new date라는 인스턴트 객체를 할당한다는 의미
+        /* console.log(now);
+        console.log(now.toLocaleString());
+
+        console.log(now.getFullYear());
+        console.log(now.getMonth()+1); //0월부터 시작하기 때문에 +1을 붙여줘야 함
+        console.log(now.getDate()); //1~31사이 숫자를 보여줌 */
+
+        let now = new Date();
+        let firstDay= new Date("2024-01-01");
+        let toNow=now.getTime();
+        let toFirst=firstDay.getTime();
+
+        let passedTime=toNow-toFirst;
+
+        passedTime=Math.floor(passedTime/(1000*60*60*24));
+        document.write("2024년 1월 1일부터 지금까지" + passedTime + "일이 지났습니다.")
+
+
+        let seed=prompt("전체 응모자수:","");
+        let picked=Math.floor((Math.random()*seed) +1);
+
+        document.write(`<p>전체 응모자 수: ${seed} 명</p>`);
+        document.write(`<p>당첨자: ${picked} 번</p>`);
+
+
+        // window.open("http://naver.com", "_blank", "width=500, height=500");
+    </script>
+</body>
+</html>
