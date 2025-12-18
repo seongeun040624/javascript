@@ -1,0 +1,18 @@
+*{margin: 0; padding: 0;}
+ul{list-style: none;}
+
+#nav{
+    margin: 100px;
+    display: flex;
+}
+#nav li{
+    text-align: center;
+    display: flex;
+}
+#nav li .menu_image{
+    width: 0;
+    overflow: hidden;
+}
+#nav li .text_image{padding-right: 10px;}
+#nav li .text_image .on{display: none;}
+#nav li .text_image .off{}
