@@ -8,6 +8,7 @@ ul{list-style: none;}
 #nav li{
     text-align: center;
     display: flex;
+    align-items: center;
 }
 #nav li .menu_image{
     width: 0;
