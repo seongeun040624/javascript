@@ -1,0 +1,29 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+nav{
+    width: 200px;
+    margin: 50px auto;
+}
+nav>ul{}
+nav>ul>li{
+    list-style: none;
+    text-align: center;
+    margin-bottom: 3px;
+}
+nav>ul>li>.title{
+    height: 35px;
+    background: #9ab92e;
+    cursor: pointer;
+    line-height: 35px;
+}
+nav>ul>li>.sub{display: none;}
+nav>ul>li>.sub li{
+    list-style: none;
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 3px;
+    background: #fdf6dd;
+}
+nav>ul>li>.sub li a{
+    text-decoration: none;
+    color: #333;
+}
