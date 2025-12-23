@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{box-sizing: border-box;}
+        body{
+            background: #192839;
+        }
+        .imgWrap{
+            width: 620px;
+            margin: 100px auto;
+            display: flex;
+        }
+        .imgWrap .thumbs{width: 100px;}
+        .imgWrap .thumbs a{}
+        .imgWrap .thumbs a img{
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-bottom: 3px;
+            object-fit: cover;
+        }
+
+        #largeImg{
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin-left: 5px;
+            height: 290px;
+            
+        }
+        #largeImg img{}
+    </style>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <div class="imgWrap">
+        <div class="thumbs">
+            <a href="images/pic1.jpg"><img src="./images/th_pic1.jpg" alt="img1"></a>
+            <a href="images/pic2.jpg"><img src="./images/th_pic2.jpg" alt="img2"></a>
+            <a href="images/pic3.jpg"><img src="./images/th_pic3.jpg" alt="img3"></a>
+        </div>
+        <div id="largeImg">
+            <img src="./images/pic1.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        $('.thumbs a').click(function(e){
+            e.preventDefault(); //원래 있던 a기능 해제 >> 하이퍼링크 해제
+            let path = $(this).attr('href'); //path라는 변수에 href 속성값을 넣음
+            //console.log(path)
+            $('#largeImg img').attr({src: path}); // 선택자를 누르면 src 경로가 path(href) 값으로 변경됨
+            $('#largeImg img').css('opacity', 0).stop().animate({opacity: 1}, 1000); 
+            //↑이미지 나올 때 효과: img에 투명도 0을 주고 stop활용해서 효과 멈춘다음? 애니메이션 효과로 투명도 1로 변경 -> 1초동안 투명도 변경되게
+
+            //return false; 이걸 쓰거나 prevent~를 쓰거나 해야 결과가 나옴
+        });
+    </script>
+</body>
+</html>
