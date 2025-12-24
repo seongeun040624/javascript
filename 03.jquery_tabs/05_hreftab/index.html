@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabContent</title>
+    <style>
+        *{margin: 0; padding: 0; /* box-sizing: border-box; */}
+        li{list-style: none;}
+
+        #wrap{
+            width: 494px;
+            margin: 50px auto;
+        }
+        #wrap ul{display: flex;}
+        #wrap ul li{
+            margin-right: 6px;
+            height: 25px;
+            overflow: hidden;
+        }
+        #wrap ul li a{}
+        #wrap ul li a.on{}
+        #wrap ul li a.on img{margin-top: -25px;}
+        #wrap ul li a img{}
+
+
+        #content{
+            margin-top: 10px;
+            position: relative;
+            width: 455px;
+            height: 291px;
+            background: #55aaea;
+            padding: 16px;
+        }
+        #content>div{
+            position: absolute;
+            display: none;
+        }
+        #content>div img.on{
+            opacity: .5;
+            cursor: pointer;
+        }
+    </style>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            let tab = $('#wrap #tab>li');
+            let content = $('#content>div');
+
+            tab.click(function(e){
+                e.preventDefault();
+                let tg = $(this); //li
+                let ta = tg.find('a');
+
+                tab.find('a').removeClass('on');
+                ta.addClass('on');
+
+                let i = tg.index();
+                content.css('display', 'none');
+                content.eq(i).css('display', 'block');
+            });
+
+            let el = $('#content>div>img');
+            let urls = [
+                'https://www.naver.com',
+                'https://www.daum.net',
+                'https://www.google.com',
+                'https://www.yahoo.com'
+            ]
+            el.on({mouseover:function(){
+                $(this).addClass('on');
+            }, mouseout:function(){
+                $(this).removeClass('on');
+            }, click(){
+                let tg = $(this);
+                let i = tg.parent().index();
+                let linkUrl = urls[i];
+
+                window.open(linkUrl);
+
+            }})
+        })
+    </script>
+</head>
+<body>
+    <div id="wrap">
+      <!-- tabmenu -->
+      <ul id="tab">
+         <li>
+            <a href="#gallery" class="on"><img src="img/tab01.png" alt="Gallery" />
+            </a>
+         </li>
+         <li><a href="#cafe"><img src="img/tab02.png" alt="Cafe" /></a></li>
+         <li><a href="#lounge"><img src="img/tab03.png" alt="Lounge" /></a></li>
+         <li><a href="#service"><img src="img/tab04.png" alt="Service" /></a></li>
+      </ul>
+      <!-- //tabmenu -->
+      
+      <!-- tab content -->
+      <div id="content">
+         <div style="display:block;">
+            <img src='img/img01.png' alt="img1" />
+         </div>
+         <div>
+            <img src='img/img02.png' alt="img2" />
+         </div>
+         <div>
+            <img src='img/img03.png' alt="img3" />
+         </div>
+         <div>
+            <img src='img/img04.png' alt="img4" />
+         </div>
+      </div>
+      <!-- //tab content -->
+
+   </div>
+</body>
+</html>

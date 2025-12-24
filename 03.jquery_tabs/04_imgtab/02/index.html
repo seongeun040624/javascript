@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{box-sizing: border-box;}
+        body{background: #192839;}
+        .imgWrap{
+            width: 620px;
+            margin: 100px auto;
+           
+        }
+        .imgWrap>div{
+             display: flex;
+        }
+        .thumbs{
+            width: 100px;
+        }
+        .thumbs img{
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-bottom: 3px;
+        }
+        #largeImg{
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin-left: 5px;
+            height: 290px;
+            overflow: hidden;
+        }
+        #caption{
+            background: rgba(255,255,255,.6);
+            padding: 10px;
+            border: 1px solid #ccc;
+            color: #999;
+            position: relative;
+        }
+    </style>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <div class="imgWrap">
+        <div>
+            <div class="thumbs">
+                <a href="images/pic1.jpg"><img src="./images/th_pic1.jpg" alt="img1"></a>
+                <em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam similique nisi.</em>
+                <a href="images/pic2.jpg"><img src="./images/th_pic2.jpg" alt="img2"></a>
+                <em>Lorem ipsum dolor sit amet consectetur adipisicing elit. amet expedita veniam sequi debitis.</em>
+                <a href="images/pic3.jpg"><img src="./images/th_pic3.jpg" alt="img3"></a>
+                <em>Lorem ipsum dolor sit amet consectetur adipisicing elit. maxime voluptatum nostrum corrupti magni.</em>
+            </div>
+            <div id="largeImg">
+                <img src="./images/pic1.jpg" alt="">
+            </div>
+        </div>
+        <!-- <div id="caption"></div> -->
+    </div>
+    
+    <script>
+        $('.thumbs em').hide();
+        $('.thumbs a').click(function(e){
+            e.preventDefault();
+
+            $('#caption').remove();
+
+            let path = $(this).attr('href');
+            $('#largeImg>img').attr('src', path);
+
+            let msg = $(this).next('em').text();
+            //console.log(msg)
+            $('#largeImg').append('<div id="caption"></div>');
+
+            $('#largeImg #caption').text(msg);
+
+            let posy = $('#largeImg #caption').height()+25;
+            $('#largeImg #caption').animate({top: -posy + 'px'}, 500);
+
+        });
+    </script>
+</body>
+</html>
