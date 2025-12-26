@@ -39,6 +39,44 @@
             });
        });
     </script>
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const weatherIcon = {
+                '01': 'fas fa-sun',
+                '02': 'fas fa-cloud-sun',
+                '03': 'fas fa-cloud',
+                '04': 'fas fa-cloud-meatball',
+                '09': 'fas fa-cloud-sun-rain',
+                '10': 'fas fa-cloud-showers-heavy',
+                '11': 'fas fa-poo-storm',
+                '13': 'fas fa-snowflake',
+                '50': 'fas fa-smog'
+            };
+
+            const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?id=1835848&appid=a3344edbae73a7ac57a90e0b932373c7&units=metric';
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const temp = Math.floor(data.main.temp);
+                    const city = data.name;
+                    const icon = data.weather[0].icon.substr(0, 2);
+
+                    document.querySelector('.ciconTemp').insertAdjacentHTML(
+                        'beforeend',
+                        `<i class="${weatherIcon[icon]}"></i>`
+                    );
+                    document.querySelector('.cCity').textContent += city;
+                    document.querySelector('.cTemp').textContent += temp;
+                })
+                .catch(error => {
+                    console.error('Weather API Error:', error);
+                });
+
+        });
+    </script> -->
+
 </head>
 <body>
     <div class="cTemp">현재온도: </div>
