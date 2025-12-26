@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날씨 감정표현</title>
+    <style>
+        body{height: 100vh;}
+
+        body[data-mood="happy"] {
+            background: linear-gradient(#ffe259, #ffa751);
+            }
+
+            body[data-mood="sad"] {
+            background: linear-gradient(#bdc3c7, #2c3e50);
+            }
+
+            body[data-mood="calm"] {
+            background: linear-gradient(#cfd9df, #e2ebf0);
+            }
+
+            body[data-mood="excited"] {
+            background: linear-gradient(#fbc2eb, #a6c1ee);
+        }
+
+        .emotion-text{
+            font-size: 24px;
+            font-weight: bold;
+            color: #1bcc00;
+        }
+    </style>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+    <script>
+        const weatherEmotionMap = {
+            Clear: {
+                emoji: "😄",
+                text: "기분 좋은 하루예요!",
+                mood: "happy"
+            },
+            Clouds: {
+                emoji: "🙂",
+                text: "잔잔한 하루네요",
+                mood: "calm"
+            },
+            Rain: {
+                emoji: "😢",
+                text: "촉촉한 감성의 날",
+                mood: "sad"
+            },
+            Drizzle: {
+                emoji: "😶",
+                text: "살짝 센치해지는 날씨",
+                mood: "melancholy"
+            },
+            Thunderstorm: {
+                emoji: "😨",
+                text: "조심하세요, 날씨가 거칠어요",
+                mood: "anxious"
+            },
+            Snow: {
+                emoji: "😍",
+                text: "설레는 하루예요",
+                mood: "excited"
+            },
+            Mist: {
+                emoji: "😶‍🌫️",
+                text: "몽환적인 분위기",
+                mood: "mysterious"
+            }
+        };
+
+
+       fetch('https://api.openweathermap.org/data/2.5/weather?id=1835848&appid=a3344edbae73a7ac57a90e0b932373c7&units=metric').then(
+        res => res.json()
+       ).then(data => {
+            const weatherMain = data.weather[0].main;
+            setEmotion(weatherMain);
+       })
+
+       function setEmotion(weather){
+            const emotion = weatherEmotionMap[weather];
+
+            if(!emotion) return; //emotion이 없으면
+
+            document.querySelector(".emoji").textContent = emotion.emoji;
+            document.querySelector(".emotion-text").textContent = emotion.text;
+
+            document.body.setAttribute("data-mood", emotion.mood);
+
+       }
+    </script>
+
+</head>
+<body>
+    <div class="weather-emotion">
+        <div class="emoji">🙂</div>
+        <p class="emotion-text">오늘의 기분</p>
+    </div>
+</body>
+</html>
