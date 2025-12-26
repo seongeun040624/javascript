@@ -4,12 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>날씨</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
         /* a3344edbae73a7ac57a90e0b932373c7 */
-       /*  http://api.openweathermap.org/data/2.5/forecast?id=1835848&appid=4ecca16787c189c5d5d2e1313149e88e */
+       /*  http://api.openweathermap.org/data/2.5/forecast?id=1835848&appid=a3344edbae73a7ac57a90e0b932373c7  8일치 온도*/
+       /* https://api.openweathermap.org/data/2.5/weather?id=1835848&appid=a3344edbae73a7ac57a90e0b932373c7&units=metric 하루치 온도/섭씨온도로 변환*/
+
+       $(function(){
+        $.getJSON('https://api.openweathermap.org/data/2.5/weather?id=1835848&appid=a3344edbae73a7ac57a90e0b932373c7&units=metric', 
+            function(data){
+                //alert(data.weather[0].description);
+                let weatherIcon = {
+                    '01' : "fas fa-sun",
+                    '02' : 'fas fa-cloud-sun',
+                    '03' : 'fas fa-cloud',
+                    '04' : 'fas fa-cloud-meatball',
+                    '09' : 'fas fa-cloud-sun-rain',
+                    '10' : 'fas fa-cloud-showers-heavy',
+                    '11' : 'fas fa-poo-storm',
+                    '13' : 'fas fa-snowflake',
+                    '50' : 'fas fa-smog'
+                }
+
+                let $temp = data.main.temp;
+                let $min = data.main.temp_min;
+                let $max = data.main.temp_max;
+                let $wind = data.wind.speed;
+                let $icon = (data.weather[0].icon).substr(0,2); //대괄호 안에 들어있는 거는 순번을 써줘야 함
+
+                $('.cTemp').append($temp);
+                $('.cminTemp').append($min);
+                $('.cmaxTemp').append($max);
+                $('.cwindTemp').append($wind);
+                $('.ciconTemp').append('<i class=" '+weatherIcon[$icon]+'"></i>');
+            })
+       })
     </script>
 </head>
 <body>
-    
+    <div class="cTemp">현재온도: </div>
+    <div class="cminTemp">최저온도: </div>
+    <div class="cmaxTemp">최고온도: </div>
+    <div class="cwindTemp">강속: </div>
+    <div class="ciconTemp">아이콘: </div>
 </body>
 </html>

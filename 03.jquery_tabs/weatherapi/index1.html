@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날씨</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+       $(function(){
+            let weatherIcon = {
+                '01' : "fas fa-sun",
+                '02' : 'fas fa-cloud-sun',
+                '03' : 'fas fa-cloud',
+                '04' : 'fas fa-cloud-meatball',
+                '09' : 'fas fa-cloud-sun-rain',
+                '10' : 'fas fa-cloud-showers-heavy',
+                '11' : 'fas fa-poo-storm',
+                '13' : 'fas fa-snowflake',
+                '50' : 'fas fa-smog'
+            };
+            let apiUrl = 'https://api.openweathermap.org/data/2.5/weather?id=1835848&appid=a3344edbae73a7ac57a90e0b932373c7&units=metric';
+            
+
+            $.ajax({
+                url : apiUrl,
+                dataType : 'json',
+                type : 'GET',
+                async : false,
+                success : function(data){
+                    let $Temp = Math.floor(data.main.temp);
+                    let $city = data.name;
+                    let $icon = (data.weather[0].icon).substr(0,2);
+
+                    $('.ciconTemp').append('<i class=" '+weatherIcon[$icon]+'"></i>');
+                    $('.cCity').append($city);
+                    $('.cTemp').append($Temp);
+                }
+            });
+       });
+    </script>
+</head>
+<body>
+    <div class="cTemp">현재온도: </div>
+    <div class="ciconTemp">아이콘: </div>
+    <div class="cCity">지역: </div>
+</body>
+</html>
