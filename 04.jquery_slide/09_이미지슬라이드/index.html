@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slideMove</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-1.9.1.min.js"></script>
+    <script src="./js/script.js" defer></script>
+    <script>
+        // HTML 문서의 DOM 구조가 모두 로드된 후 실행
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ===== 슬라이드 관련 요소 선택 =====
+
+            // 모든 슬라이드 li 요소들을 NodeList로 가져옵니다
+            const slideList = document.querySelectorAll('.slideImg > ul > li');
+
+            // 이전 / 다음 화살표 버튼
+            const prevBtn = document.querySelector('.arrowBtn .prev');
+            const nextBtn = document.querySelector('.arrowBtn .next');
+
+            // 하단 컨트롤 버튼들
+            const controlBtns = document.querySelectorAll('.controlBtn > ul > li');
+
+            // 슬라이드 전체 영역 (hover 제어용)
+            const slide = document.querySelector('.slide');
+
+            // ===== 상태 변수 =====
+
+            // 현재 슬라이드 인덱스
+            let current = 0;
+
+            // 자동 슬라이드 setInterval ID
+            let intervalId;
+
+            // 자동 슬라이드 시작
+            slideMove();
+
+            // ===== 자동 슬라이드 함수 =====
+            function slideMove() {
+                intervalId = setInterval(() => {
+
+                    // 현재 슬라이드와 버튼
+                    const prev = slideList[current];
+                    const prevCtrl = controlBtns[current];
+
+                    // 현재 슬라이드를 왼쪽으로 이동
+                    move(prev, '0%', '-100%');
+                    prevCtrl.classList.remove('on');
+
+                    // 인덱스 증가
+                    current++;
+
+                    // 마지막 슬라이드면 처음으로 이동
+                    if (current === slideList.length) current = 0;
+
+                    // 다음 슬라이드와 버튼
+                    const next = slideList[current];
+                    const nextCtrl = controlBtns[current];
+
+                    nextCtrl.classList.add('on');
+
+                    // 다음 슬라이드를 오른쪽에서 중앙으로 이동
+                    move(next, '100%', '0%');
+
+                }, 2000); // 2초 간격
+            }
+
+            // ===== 슬라이드 이동 애니메이션 =====
+            function move(target, start, end) {
+
+                // 시작 위치 설정
+                target.style.left = start;
+
+                // transition 제거 (초기 위치 적용용)
+                target.style.transition = 'none';
+
+                // 다음 프레임에서 transition 적용
+                requestAnimationFrame(() => {
+                    target.style.transition = 'left 0.5s';
+                    target.style.left = end;
+                });
+            }
+
+            // ===== 마우스 오버 시 자동 슬라이드 정지 =====
+            slide.addEventListener('mouseenter', () => {
+                clearInterval(intervalId);
+            });
+
+            // ===== 마우스 아웃 시 자동 슬라이드 재시작 =====
+            slide.addEventListener('mouseleave', () => {
+                slideMove();
+            });
+
+            // ===== 다음 버튼 클릭 =====
+            nextBtn.addEventListener('click', () => {
+
+                const prev = slideList[current];
+                const prevCtrl = controlBtns[current];
+
+                // 현재 슬라이드를 왼쪽으로 이동
+                move(prev, '0%', '-100%');
+                prevCtrl.classList.remove('on');
+
+                current++;
+                if (current === slideList.length) current = 0;
+
+                const next = slideList[current];
+                const nextCtrl = controlBtns[current];
+
+                nextCtrl.classList.add('on');
+                move(next, '100%', '0%');
+            });
+
+            // ===== 이전 버튼 클릭 =====
+            prevBtn.addEventListener('click', () => {
+
+                const prev = slideList[current];
+                const prevCtrl = controlBtns[current];
+
+                // 현재 슬라이드를 오른쪽으로 이동
+                move(prev, '0%', '100%');
+                prevCtrl.classList.remove('on');
+
+                current--;
+                if (current < 0) current = slideList.length - 1;
+
+                const next = slideList[current];
+                const nextCtrl = controlBtns[current];
+
+                nextCtrl.classList.add('on');
+                move(next, '-100%', '0%');
+            });
+
+            // ===== 컨트롤 버튼 클릭 =====
+            controlBtns.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+
+                    // 같은 슬라이드 클릭 시 무시
+                    if (current === index) return;
+
+                    // 모든 버튼 on 제거
+                    controlBtns.forEach(b => b.classList.remove('on'));
+                    btn.classList.add('on');
+
+                    // 이동 방향 판단
+                    if (current > index) {
+                        controlMoveBackward(index);
+                    } else {
+                        controlMoveForward(index);
+                    }
+                });
+            });
+
+            // ===== 앞으로 이동 =====
+            function controlMoveForward(i) {
+                const currentEl = slideList[current];
+                const nextEl = slideList[i];
+
+                move(currentEl, '0%', '-100%');
+                move(nextEl, '100%', '0%');
+
+                current = i;
+            }
+
+            // ===== 뒤로 이동 =====
+            function controlMoveBackward(i) {
+                const currentEl = slideList[current];
+                const nextEl = slideList[i];
+
+                move(currentEl, '0%', '100%');
+                move(nextEl, '-100%', '0%');
+
+                current = i;
+            }
+
+        });
+    </script>
+
+
+</head>
+<body>
+    <div class="slide">
+        <div class="slideImg">
+            <ul>
+                <li><a href="#" class="hidden">배너이미지1</a></li>
+                <li><a href="#" class="hidden">배너이미지2</a></li>
+                <li><a href="#" class="hidden">배너이미지3</a></li>
+            </ul>
+        </div>
+        <div class="arrowBtn">
+            <img src="./img/left.png" alt="leftBtn" class="prev">
+            <img src="./img/right.png" alt="rightBtn" class="next">
+        </div>
+        <div class="controlBtn">
+            <ul>
+                <li class="on"><a href="#" class="hidden">버튼1</a></li>
+                <li><a href="#" class="hidden">버튼2</a></li>
+                <li><a href="#" class="hidden">버튼3</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
