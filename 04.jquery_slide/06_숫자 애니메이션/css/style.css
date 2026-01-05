@@ -1,0 +1,33 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+.progressBar{
+    position: relative;
+    width: 1000px;
+    height: 30px;
+    border: 1px solid #000;
+    margin: 50px auto;
+}
+.progressBar .bar{
+    position: absolute;
+    top: 0; left: 0;
+    width: 0;
+    height: 100%;
+}
+.progressBar p{
+    position: absolute;
+    left: -50px;
+    color: #666;
+}
+.progressBar:nth-child(1) .bar{background: orange;}
+.progressBar:nth-child(2) .bar{background: orangered;}
+.progressBar:nth-child(3) .bar{background: yellow;}
+.progressBar:nth-child(4) .bar{background: red;}
+
+.progressBar .num{
+    position: absolute;
+    top: 0; bottom: 0;
+    right: 15px;
+    font-size: 1.1em;
+    line-height: 30px;
+    color: #666;
+}
