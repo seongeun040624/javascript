@@ -1,0 +1,30 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+html{overflow: hidden;}
+
+.sectionWrap{
+    width: 100%;
+    height: calc(100vh * 9);
+}
+
+.section{
+    width: 100%;
+    max-width: 1920px;
+    height: 100%;
+    max-height: 100vh;
+    font-size: 100px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 100vh;
+}
+
+#section1{background: red;}
+#section2{background: orange;}
+#section3{background: olive;}
+#section4{background: yellow;}
+#section5{background: green;}
+#section6{background: thistle;}
+#section7{background: aqua;}
+#section8{background: teal;}
+#section9{background: darkblue;}
