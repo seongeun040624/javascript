@@ -1,0 +1,25 @@
+.box{
+    width: 1000px;
+    height: 500px;
+    margin: 100px auto;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.boxWrap{
+    display: flex;
+    position: relative;
+    width: 2000px;
+}
+
+.boxWrap>div{
+    width: 200px;
+    height: 400px;
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+.box1{background: red;}
+.box2{background: orange;}
+.box3{background: orangered;}
+.box4{background: teal;}

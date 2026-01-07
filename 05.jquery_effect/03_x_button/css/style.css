@@ -1,0 +1,34 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+.box{
+    width: 30px;
+    height: 12px;
+    margin: 100px;
+    cursor: pointer;
+}
+
+.box>div{
+    width: 100%;
+    height: 2px;
+    background: #000;
+    transition: .4s;
+    transform: rotate(0deg);
+    position: relative;
+}
+
+.line1{}
+.line2{
+    opacity: 1;
+    margin: 3px 0;
+}
+.line3{}
+
+.box.active .line1{
+    transform: rotate(-45deg);
+    top: 5px;
+}
+.box.active .line2{opacity: 0;}
+.box.active .line3{
+    transform: rotate(45deg);
+    top: -5px;
+}
