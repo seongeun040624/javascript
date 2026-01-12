@@ -1,0 +1,65 @@
+*{padding: 0; margin: 0; box-sizing: border-box;}
+
+#wrap{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.section{
+    width: 100%;
+    height: 900px;
+}
+.section1{background: #ff0000;}
+.section2{
+    background: #1fff44;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    justify-content: space-between;
+    padding: 30px;
+}
+.section2>div{width: 50%;}
+.section2 .left{
+    background: teal;
+    position: absolute;
+    left: -50%;
+}
+.section2 .right{
+    background: indigo;
+    position: absolute;
+    right: -50%;
+}
+
+
+.section3{
+    background: #b514ff;
+    position: relative;
+}
+.section3>div{}
+.section3>.left{}
+.section3 .left .leftBox{
+    position: absolute;
+    top: 100px; left: 150px;
+    opacity: 0;
+}
+.section3 .left .leftBox img{
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+}
+.section3 .right{}
+.section3 .right .rightBox{
+    position: absolute;
+    bottom: 70px; right: 50px;
+    opacity: .1;
+}
+.section3 .right .rightBox img{
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+}
+
+
+.section4{background: #ff8512;}
+.section5{background: #ff1462;}
