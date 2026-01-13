@@ -1,0 +1,72 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+body{
+    background: #edecec;
+}
+
+.issue{
+    width: 100%;
+    height: 650px;
+    background: #fffafa;
+    float: left;
+}
+.issue .box{
+    width: 90%;
+    margin: 25px auto;
+    position: relative;
+    height: calc(100% - 50px);
+    background: red;
+}
+.issue .box .page{
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 680px;
+    height: 450px;
+    background: #333;
+}
+.issue .box .page .view{
+    position: absolute;
+    width: 0%;
+    height: 450px;
+    overflow: hidden;
+}
+.issue .box .page .right{right: 0;}
+.issue .box .page .view.on{width: 100%;}
+.issue .box .page .view img{
+    position: absolute;
+    top: 0;
+}
+
+
+.issue .box .btn{}
+.issue .box .btn>a{
+    position: absolute;
+    color: #333;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+}
+.issue .box .btn .prev{top: 45%; left: 100px;}
+.issue .box .btn .next{top: 45%; right: 100px;}
+
+
+.issue .box .pagenation{
+    position: absolute;
+    bottom: 50px; left: 50%;
+    transform: translateX(-50%);
+}
+.issue .box .pagenation a{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: #d0d0d0;
+    margin: 0 8px;
+    border-radius: 50%;
+    text-indent: -999999999em;
+    vertical-align: middle;
+}
+.issue .box .pagenation a.on{
+    background: #333;
+    border: 4px solid #dadada;
+}
