@@ -26,11 +26,78 @@
 hr{margin-top: 50px;}
 
 .sw{
-    margin-top: 50px;
+    margin: 50px auto;
+    width: 600px;
+    height: 500px;
+    position: relative;
 }
 .sw .mySwiper2{}
 .sw .mySwiper2 .swiper-wrapper{}
 .sw .mySwiper2 .swiper-wrapper .swiper-slide{}
-.sw .mySwiper2 .swiper-wrapper .swiper-slide img{}
-.sw .swiper-button-next-sw{}
-.sw .swiper-button-prev-sw{}
+.sw .mySwiper2 .swiper-wrapper .swiper-slide img{
+    object-fit: cover;
+    height: 100%;
+}
+
+.sw .control-swiper{}
+.sw .control-swiper .swiper-button-pause{
+    position: absolute;
+    top: -30px; left: 0;
+    background: url(../img/slide_btn_pause.png) no-repeat center/auto;
+    width: 26px;
+    height: 26px;
+    z-index: 99;
+}
+.sw .control-swiper .swiper-button-play{
+    position: absolute;
+    top: -30px; left: 0;
+    background: url(../img/slide_btn_play.png) no-repeat center/auto;
+    width: 26px;
+    height: 26px;
+    z-index: 99;
+}
+.sw .swiper-button-next-sw{
+    position: absolute;
+    top: 50%; right: -50px;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+.sw .swiper-button-prev-sw{
+    position: absolute;
+    top: 50%; left: -50px;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+.sw .swiper-pagination-sw{
+    position: absolute;
+    top: -30px; right: 0;
+    text-align: right;
+}
+
+
+.looptransition{
+    margin-top: 150px;
+    background: #ddd;
+}
+.looptransition .loopSwiper{
+    margin-bottom: 30px;
+}
+.looptransition .loopSwiper .swiper-wrapper{
+     transition-timing-function: linear !important;
+}
+.looptransition .loopSwiper .swiper-wrapper .swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.looptransition .loopSwiper .swiper-wrapper .swiper-slide:nth-child(odd){
+    background: pink;
+}
+.looptransition .loopSwiper .swiper-wrapper .swiper-slide:nth-child(even){
+    background: aqua;
+}
